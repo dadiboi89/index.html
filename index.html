@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Koker Bank — Bitcoin Platform</title>
+<title>Sparkasse Bank — Bitcoin Platform</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
 
@@ -574,7 +574,7 @@
   <div class="bg-grid"></div>
   <div class="bg-glow"></div>
   <div style="position:relative; text-align:center; padding: 20px;">
-    <div class="landing-logo">KOKER BANK</div>
+    <div class="landing-logo">SPARKASSE BANK</div>
     <div class="landing-sub">Bitcoin • Crypto • Finance</div>
     <div class="landing-tagline">The next-generation crypto banking platform. Buy, sell, and manage Bitcoin with institutional-grade tools.</div>
     <div class="landing-btns">
@@ -600,14 +600,11 @@
   <div class="modal-box">
     <button class="close-btn" onclick="closeModal('loginModal')">×</button>
     <div class="modal-title">SIGN IN</div>
-    <div class="modal-sub">Welcome back to Koker Bank</div>
-    <div class="demo-hint">
-      👤 User: user@koker.bank / pass123<br>
-      🔐 Admin: admin@koker.bank / admin123
-    </div>
+    <div class="modal-sub">Welcome back to Sparkasse Bank</div>
+
     <div class="form-group">
       <label>Email Address</label>
-      <input type="email" id="loginEmail" placeholder="you@example.com" value="user@koker.bank">
+      <input type="email" id="loginEmail" placeholder="you@example.com" value="user@sparkasse.bank">
     </div>
     <div class="form-group">
       <label>Password</label>
@@ -622,7 +619,7 @@
   <div class="modal-box">
     <button class="close-btn" onclick="closeModal('registerModal')">×</button>
     <div class="modal-title">GET STARTED</div>
-    <div class="modal-sub">Open your Koker Bank account today</div>
+    <div class="modal-sub">Open your Sparkasse Bank account today</div>
     <div class="form-row">
       <div class="form-group">
         <label>First Name</label>
@@ -655,7 +652,7 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="sidebar-logo">
-      <div class="sidebar-logo-text">KOKER BANK</div>
+      <div class="sidebar-logo-text">SPARKASSE BANK</div>
       <div class="sidebar-role" id="sidebarRole">USER ACCOUNT</div>
     </div>
     <div class="sidebar-nav" id="sidebarNav"></div>
@@ -663,7 +660,7 @@
       <div class="user-avatar" id="sidebarAvatar">U</div>
       <div class="user-info-small">
         <div class="user-name-small" id="sidebarName">User</div>
-        <div class="user-email-small" id="sidebarEmail">user@koker.bank</div>
+        <div class="user-email-small" id="sidebarEmail">user@sparkasse.bank</div>
       </div>
       <div style="color:var(--muted); font-size:18px;">↩</div>
     </div>
@@ -854,7 +851,7 @@
     <!-- DEPOSIT PAGE -->
     <div class="page" id="page-deposit">
       <div class="section-title">Deposit USD</div>
-      <div class="section-sub">Fund your Koker Bank account</div>
+      <div class="section-sub">Fund your Sparkasse Bank account</div>
       <div class="grid-2">
         <div class="card">
           <div style="display:grid; gap:12px; margin-bottom:20px;">
@@ -1188,7 +1185,7 @@
         <div class="card">
           <div class="card-title">System Info</div>
           <div style="font-size:14px; color:var(--muted); line-height:2.5;">
-            <div>Platform: <span style="color:var(--text)">Koker Bank v1.0</span></div>
+            <div>Platform: <span style="color:var(--text)">Sparkasse Bank v1.0</span></div>
             <div>Mode: <span style="color:var(--gold)">Demo / Sandbox</span></div>
             <div>Database: <span style="color:var(--text)">In-Memory Store</span></div>
             <div>API: <span style="color:var(--green)">Online</span></div>
@@ -1225,8 +1222,8 @@
 // =================== FAKE BACKEND (In-Memory Store) ===================
 const DB = {
   users: [
-    { id: 1, firstName: 'Admin', lastName: 'Koker', email: 'admin@koker.bank', password: 'admin123', role: 'admin', usdBalance: 99999, btcBalance: 1.0, status: 'active', kycStatus: 'verified', phone: '+234 800 000 0001', createdAt: '2024-01-01', address: 'bc1qadmin000000000000000000000000000000000' },
-    { id: 2, firstName: 'John', lastName: 'Mensah', email: 'user@koker.bank', password: 'pass123', role: 'user', usdBalance: 2450, btcBalance: 0.00342, status: 'active', kycStatus: 'pending', phone: '+234 800 123 4567', createdAt: '2024-06-12', address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh' },
+    { id: 1, firstName: 'Admin', lastName: 'Koker', email: 'admin@sparkasse.bank', password: 'admin123', role: 'admin', usdBalance: 99999, btcBalance: 1.0, status: 'active', kycStatus: 'verified', phone: '+234 800 000 0001', createdAt: '2024-01-01', address: 'bc1qadmin000000000000000000000000000000000' },
+    { id: 2, firstName: 'John', lastName: 'Mensah', email: 'user@sparkasse.bank', password: 'pass123', role: 'user', usdBalance: 0, btcBalance: 0, status: 'active', kycStatus: 'pending', phone: '+234 800 123 4567', createdAt: '2024-06-12', address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh' },
     { id: 3, firstName: 'Amara', lastName: 'Osei', email: 'amara@example.com', password: 'demo123', role: 'user', usdBalance: 8750, btcBalance: 0.05120, status: 'active', kycStatus: 'verified', phone: '+233 50 000 0001', createdAt: '2024-07-03', address: 'bc1qamara000000000000000000000000000000000' },
     { id: 4, firstName: 'Kwame', lastName: 'Boateng', email: 'kwame@example.com', password: 'demo123', role: 'user', usdBalance: 1200, btcBalance: 0.00850, status: 'suspended', kycStatus: 'pending', phone: '+233 50 000 0002', createdAt: '2024-08-15', address: 'bc1qkwame000000000000000000000000000000000' },
     { id: 5, firstName: 'Fatima', lastName: 'Diallo', email: 'fatima@example.com', password: 'demo123', role: 'user', usdBalance: 12100, btcBalance: 0.12000, status: 'active', kycStatus: 'verified', phone: '+221 77 000 0001', createdAt: '2024-09-01', address: 'bc1qfatima00000000000000000000000000000000' },
@@ -1242,7 +1239,7 @@ const DB = {
   ],
   balanceLedger: [],
   notifications: [
-    { id: 'n1', userId: 2, type: 'info', msg: 'Welcome to Koker Bank! Complete your KYC to unlock all features.', date: '2024-06-12', read: false },
+    { id: 'n1', userId: 2, type: 'info', msg: 'Welcome to Sparkasse Bank! Complete your KYC to unlock all features.', date: '2024-06-12', read: false },
     { id: 'n2', userId: 2, type: 'success', msg: 'Deposit of $1,000.00 received successfully.', date: '2024-06-13', read: false },
     { id: 'n3', userId: 2, type: 'info', msg: 'Bitcoin price alert: BTC crossed $65,000.', date: '2024-06-20', read: false },
   ],
@@ -1286,7 +1283,7 @@ function register() {
   currentUser = newUser;
   closeModal('registerModal');
   initApp();
-  showToast('Account created! Welcome to Koker Bank 🎉','success');
+  showToast('Account created! Welcome to Sparkasse Bank 🎉','success');
 }
 
 function logout() {
@@ -1752,6 +1749,25 @@ function toggleUserStatus(uid) {
   showToast(`User ${u.status === 'active' ? 'activated' : 'suspended'}`, u.status === 'active' ? 'success' : 'error');
 }
 
+function adminChangeName(uid) {
+  const u = DB.users.find(u => u.id === uid);
+  if (!u) return;
+  const newFirst = prompt("Enter new First Name:", u.firstName);
+  if (newFirst === null) return;
+  const newLast = prompt("Enter new Last Name:", u.lastName);
+  if (newLast === null) return;
+  
+  if (newFirst.trim() === '' || newLast.trim() === '') {
+    showToast('Name cannot be empty', 'error');
+    return;
+  }
+  u.firstName = newFirst.trim();
+  u.lastName = newLast.trim();
+  showToast('Name updated successfully', 'success');
+  viewUserDetail(uid);
+  renderAdminUsers();
+}
+
 function viewUserDetail(uid) {
   const u = DB.users.find(u => u.id === uid);
   const txs = DB.transactions.filter(t => t.userId === uid).slice(-5).reverse();
@@ -1766,7 +1782,7 @@ function viewUserDetail(uid) {
       <div class="card">
         <div class="card-title">User Profile</div>
         <div style="font-size:14px; line-height:2.3; color:var(--muted);">
-          <div>Name: <span style="color:var(--text); font-weight:600;">${u.firstName} ${u.lastName}</span></div>
+          <div>Name: <span style="color:var(--text); font-weight:600;">${u.firstName} ${u.lastName}</span> <span style="margin-left:8px; cursor:pointer; color:var(--gold); font-size:12px;" onclick="adminChangeName(${u.id})">✏️ Edit</span></div>
           <div>Email: <span style="color:var(--text);">${u.email}</span></div>
           <div>Phone: <span style="color:var(--text);">${u.phone || 'N/A'}</span></div>
           <div>Joined: <span style="color:var(--text);">${u.createdAt}</span></div>
