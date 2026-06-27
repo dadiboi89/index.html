@@ -673,8 +673,8 @@
       <div class="top-bar-right">
         <div class="btc-live">
           <div class="btc-dot"></div>
-          <span style="color:var(--muted)">BTC/USD</span>
-          <span id="liveBtcPrice" style="color:var(--gold); font-weight:700;">$67,420</span>
+          <span style="color:var(--muted)">BTC/EUR</span>
+          <span id="liveBtcPrice" style="color:var(--gold); font-weight:700;">€67,420</span>
         </div>
         <div style="cursor:pointer; position:relative;" onclick="showPage('notifications')">
           <span style="font-size:20px;">🔔</span>
@@ -693,19 +693,19 @@
           <div class="stat-icon">₿</div>
           <div class="stat-label">BTC Balance</div>
           <div class="stat-value gold" id="dashBtcBal">0.00342</div>
-          <div class="stat-change up" id="dashBtcUsd">≈ $230.57 USD</div>
+          <div class="stat-change up" id="dashBtcEur">≈ €230.57 EUR</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">💵</div>
-          <div class="stat-label">USD Balance</div>
-          <div class="stat-value green" id="dashUsdBal">$2,450.00</div>
+          <div class="stat-label">EUR Balance</div>
+          <div class="stat-value green" id="dashEurBal">€2,450.00</div>
           <div class="stat-change up">Available to invest</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">📈</div>
           <div class="stat-label">Total Portfolio</div>
-          <div class="stat-value" id="dashTotal">$2,680.57</div>
-          <div class="stat-change up" id="dashPnl">+$124.00 (4.9%)</div>
+          <div class="stat-value" id="dashTotal">€2,680.57</div>
+          <div class="stat-change up" id="dashPnl">+€124.00 (4.9%)</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">🔄</div>
@@ -717,7 +717,7 @@
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-title">Price Chart (BTC/USD) <span>7 days</span></div>
+          <div class="card-title">Price Chart (BTC/EUR) <span>7 days</span></div>
           <div class="chart-container">
             <canvas id="priceChart"></canvas>
           </div>
@@ -729,8 +729,8 @@
             <button class="btn btn-ghost" onclick="showPage('sell')">💰 Sell Bitcoin</button>
             <button class="btn btn-ghost" onclick="showPage('send')">↑ Send BTC</button>
             <button class="btn btn-ghost" onclick="showPage('receive')">↓ Receive BTC</button>
-            <button class="btn btn-ghost" onclick="showPage('deposit')">+ Deposit USD</button>
-            <button class="btn btn-ghost" onclick="showPage('withdraw')">- Withdraw USD</button>
+            <button class="btn btn-ghost" onclick="showPage('deposit')">+ Deposit EUR</button>
+            <button class="btn btn-ghost" onclick="showPage('withdraw')">- Withdraw EUR</button>
           </div>
           <div class="separator"></div>
           <div style="font-size:13px; color:var(--muted); margin-bottom:10px;">KYC Status</div>
@@ -764,15 +764,15 @@
           <div class="card-title">Market Order</div>
           <div style="text-align:center; margin-bottom:20px;">
             <div style="font-size:13px; color:var(--muted);">Current BTC Price</div>
-            <div class="price-lg" id="buyBtcPrice">$67,420.00</div>
+            <div class="price-lg" id="buyBtcPrice">€67,420.00</div>
             <div class="badge green" style="margin-top:6px;">+2.4% 24h</div>
           </div>
-          <label class="input-label">Amount (USD)</label>
-          <input class="input" id="buyUsdAmount" type="number" placeholder="100" oninput="calcBuy()" value="100">
+          <label class="input-label">Amount (EUR)</label>
+          <input class="input" id="buyEurAmount" type="number" placeholder="100" oninput="calcBuy()" value="100">
           <label class="input-label">You will receive (BTC)</label>
           <input class="input" id="buyBtcReceive" type="text" readonly placeholder="0.00148...">
           <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-bottom:16px;">
-            <span>Available: <span id="buyAvailUsd" style="color:var(--text)">$2,450.00</span></span>
+            <span>Available: <span id="buyAvailEur" style="color:var(--text)">€2,450.00</span></span>
             <span>Fee: 0.5%</span>
           </div>
           <button class="btn btn-primary btn-full" onclick="executeBuy()">Confirm Purchase</button>
@@ -787,13 +787,13 @@
     <!-- SELL PAGE -->
     <div class="page" id="page-sell">
       <div class="section-title">Sell Bitcoin</div>
-      <div class="section-sub">Convert your BTC to USD instantly</div>
+      <div class="section-sub">Convert your BTC to EUR instantly</div>
       <div class="grid-2">
         <div class="card">
           <label class="input-label">Amount (BTC)</label>
           <input class="input" id="sellBtcAmount" type="number" placeholder="0.001" oninput="calcSell()" step="0.0001">
-          <label class="input-label">You will receive (USD)</label>
-          <input class="input" id="sellUsdReceive" type="text" readonly placeholder="$0.00">
+          <label class="input-label">You will receive (EUR)</label>
+          <input class="input" id="sellEurReceive" type="text" readonly placeholder="€0.00">
           <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-bottom:16px;">
             <span>Available: <span id="sellAvailBtc" style="color:var(--text)">0.00342 BTC</span></span>
             <span>Fee: 0.5%</span>
@@ -850,7 +850,7 @@
 
     <!-- DEPOSIT PAGE -->
     <div class="page" id="page-deposit">
-      <div class="section-title">Deposit USD</div>
+      <div class="section-title">Deposit EUR</div>
       <div class="section-sub">Fund your Sparkasse Bank account</div>
       <div class="grid-2">
         <div class="card">
@@ -859,7 +859,7 @@
             <button class="btn btn-ghost" id="depMethodBank" onclick="selectDepMethod('bank')" style="text-align:left; padding:16px;">🏦 &nbsp;Bank Transfer</button>
             <button class="btn btn-ghost" id="depMethodCrypto" onclick="selectDepMethod('crypto')" style="text-align:left; padding:16px;">₿ &nbsp;Crypto Deposit</button>
           </div>
-          <label class="input-label">Amount (USD)</label>
+          <label class="input-label">Amount (EUR)</label>
           <input class="input" id="depositAmount" type="number" placeholder="500" value="500">
           <button class="btn btn-primary btn-full" onclick="executeDeposit()">Deposit Funds</button>
         </div>
@@ -868,8 +868,8 @@
           <div id="depositInfo" style="font-size:14px; color:var(--muted); line-height:2;">
             <div>Method: <span style="color:var(--text)">Debit Card</span></div>
             <div>Processing Time: <span style="color:var(--text)">Instant</span></div>
-            <div>Min Deposit: <span style="color:var(--text)">$10</span></div>
-            <div>Max Deposit: <span style="color:var(--text)">$50,000</span></div>
+            <div>Min Deposit: <span style="color:var(--text)">€10</span></div>
+            <div>Max Deposit: <span style="color:var(--text)">€50,000</span></div>
             <div>Fee: <span style="color:var(--green)">Free</span></div>
           </div>
         </div>
@@ -878,24 +878,24 @@
 
     <!-- WITHDRAW PAGE -->
     <div class="page" id="page-withdraw">
-      <div class="section-title">Withdraw USD</div>
+      <div class="section-title">Withdraw EUR</div>
       <div class="section-sub">Withdraw funds to your bank account</div>
       <div class="grid-2">
         <div class="card">
           <label class="input-label">Bank Account (Last 4 digits)</label>
           <input class="input" id="withdrawAcct" placeholder="e.g. 4242">
-          <label class="input-label">Amount (USD)</label>
+          <label class="input-label">Amount (EUR)</label>
           <input class="input" id="withdrawAmount" type="number" placeholder="200">
-          <div style="font-size:12px; color:var(--muted); margin-bottom:16px;">Available: <span id="withdrawAvail" style="color:var(--text)">$2,450.00</span></div>
+          <div style="font-size:12px; color:var(--muted); margin-bottom:16px;">Available: <span id="withdrawAvail" style="color:var(--text)">€2,450.00</span></div>
           <button class="btn btn-primary btn-full" onclick="executeWithdraw()">Request Withdrawal</button>
         </div>
         <div class="card">
           <div class="card-title">Withdrawal Info</div>
           <div style="font-size:14px; color:var(--muted); line-height:2.2;">
             <div>Processing: <span style="color:var(--text)">1–3 Business Days</span></div>
-            <div>Min Amount: <span style="color:var(--text)">$20</span></div>
-            <div>Daily Limit: <span style="color:var(--text)">$10,000</span></div>
-            <div>Fee: <span style="color:var(--text)">$1.00 flat</span></div>
+            <div>Min Amount: <span style="color:var(--text)">€20</span></div>
+            <div>Daily Limit: <span style="color:var(--text)">€10,000</span></div>
+            <div>Fee: <span style="color:var(--text)">€1.00 flat</span></div>
           </div>
         </div>
       </div>
@@ -1027,12 +1027,12 @@
           <div class="stat-icon">₿</div>
           <div class="stat-label">Platform BTC</div>
           <div class="stat-value">0.18420</div>
-          <div class="stat-change up">≈ $12,410</div>
+          <div class="stat-change up">≈ €12,410</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">💵</div>
-          <div class="stat-label">Total USD Held</div>
-          <div class="stat-value green" id="adminTotalUsd">$24,500</div>
+          <div class="stat-label">Total EUR Held</div>
+          <div class="stat-value green" id="adminTotalEur">€24,500</div>
           <div class="stat-change up">All user balances</div>
         </div>
         <div class="stat-card">
@@ -1050,7 +1050,7 @@
         <div class="stat-card">
           <div class="stat-icon">💰</div>
           <div class="stat-label">Fees Collected</div>
-          <div class="stat-value gold">$341.20</div>
+          <div class="stat-value gold">€341.20</div>
           <div class="stat-change up">This month</div>
         </div>
       </div>
@@ -1109,8 +1109,8 @@
           <div id="currentBalDisplay" style="margin-bottom:16px; display:none;">
             <div style="display:flex; gap:16px; margin-bottom:16px;">
               <div class="stat-card" style="flex:1; padding:14px;">
-                <div class="stat-label">USD</div>
-                <div class="stat-value green" id="adjUsdCurrent">$0</div>
+                <div class="stat-label">EUR</div>
+                <div class="stat-value green" id="adjEurCurrent">€0</div>
               </div>
               <div class="stat-card" style="flex:1; padding:14px;">
                 <div class="stat-label">BTC</div>
@@ -1120,11 +1120,11 @@
           </div>
           <label class="input-label">Adjustment Type</label>
           <select class="input" id="balType">
-            <option value="usd_add">Add USD</option>
-            <option value="usd_sub">Remove USD</option>
+            <option value="eur_add">Add EUR</option>
+            <option value="eur_sub">Remove EUR</option>
             <option value="btc_add">Add BTC</option>
             <option value="btc_sub">Remove BTC</option>
-            <option value="usd_set">Set USD (exact)</option>
+            <option value="eur_set">Set EUR (exact)</option>
             <option value="btc_set">Set BTC (exact)</option>
           </select>
           <label class="input-label">Amount</label>
@@ -1178,7 +1178,7 @@
           <div class="card-title" style="margin-bottom:14px;">Fee Settings</div>
           <label class="input-label">Trading Fee (%)</label>
           <input class="input" id="tradeFee" value="0.5" type="number" step="0.1">
-          <label class="input-label">Withdrawal Fee (USD)</label>
+          <label class="input-label">Withdrawal Fee (EUR)</label>
           <input class="input" id="withdrawFee" value="1.00" type="number" step="0.5">
           <button class="btn btn-primary" onclick="showToast('Settings saved','success')">Save Settings</button>
         </div>
@@ -1212,7 +1212,7 @@
       <div class="form-group"><label>Last Name</label><input id="auLast" type="text" placeholder="Doe"></div>
     </div>
     <div class="form-group"><label>Email</label><input id="auEmail" type="email" placeholder="user@example.com"></div>
-    <div class="form-group"><label>Initial USD Balance</label><input id="auUsd" type="number" placeholder="1000" value="1000"></div>
+    <div class="form-group"><label>Initial EUR Balance</label><input id="auEur" type="number" placeholder="1000" value="1000"></div>
     <div class="form-group"><label>Initial BTC Balance</label><input id="auBtc" type="number" placeholder="0.001" step="0.0001" value="0.001"></div>
     <button class="btn-gold btn-full" onclick="adminAddUser()">Create User</button>
   </div>
@@ -1222,26 +1222,26 @@
 // =================== FAKE BACKEND (In-Memory Store) ===================
 const DB = {
   users: [
-    { id: 1, firstName: 'Admin', lastName: 'Koker', email: 'admin@sparkasse.bank', password: 'admin123', role: 'admin', usdBalance: 99999, btcBalance: 1.0, status: 'active', kycStatus: 'verified', phone: '+234 800 000 0001', createdAt: '2024-01-01', address: 'bc1qadmin000000000000000000000000000000000' },
-    { id: 2, firstName: 'John', lastName: 'Mensah', email: 'user@sparkasse.bank', password: 'pass123', role: 'user', usdBalance: 0, btcBalance: 0, status: 'active', kycStatus: 'pending', phone: '+234 800 123 4567', createdAt: '2024-06-12', address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh' },
-    { id: 3, firstName: 'Amara', lastName: 'Osei', email: 'amara@example.com', password: 'demo123', role: 'user', usdBalance: 8750, btcBalance: 0.05120, status: 'active', kycStatus: 'verified', phone: '+233 50 000 0001', createdAt: '2024-07-03', address: 'bc1qamara000000000000000000000000000000000' },
-    { id: 4, firstName: 'Kwame', lastName: 'Boateng', email: 'kwame@example.com', password: 'demo123', role: 'user', usdBalance: 1200, btcBalance: 0.00850, status: 'suspended', kycStatus: 'pending', phone: '+233 50 000 0002', createdAt: '2024-08-15', address: 'bc1qkwame000000000000000000000000000000000' },
-    { id: 5, firstName: 'Fatima', lastName: 'Diallo', email: 'fatima@example.com', password: 'demo123', role: 'user', usdBalance: 12100, btcBalance: 0.12000, status: 'active', kycStatus: 'verified', phone: '+221 77 000 0001', createdAt: '2024-09-01', address: 'bc1qfatima00000000000000000000000000000000' },
+    { id: 1, firstName: 'Admin', lastName: 'Koker', email: 'admin@sparkasse.bank', password: 'admin123', role: 'admin', eurBalance: 99999, btcBalance: 1.0, status: 'active', kycStatus: 'verified', phone: '+234 800 000 0001', createdAt: '2024-01-01', address: 'bc1qadmin000000000000000000000000000000000' },
+    { id: 2, firstName: 'John', lastName: 'Mensah', email: 'user@sparkasse.bank', password: 'pass123', role: 'user', eurBalance: 0, btcBalance: 0, status: 'active', kycStatus: 'pending', phone: '+234 800 123 4567', createdAt: '2024-06-12', address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh' },
+    { id: 3, firstName: 'Amara', lastName: 'Osei', email: 'amara@example.com', password: 'demo123', role: 'user', eurBalance: 8750, btcBalance: 0.05120, status: 'active', kycStatus: 'verified', phone: '+233 50 000 0001', createdAt: '2024-07-03', address: 'bc1qamara000000000000000000000000000000000' },
+    { id: 4, firstName: 'Kwame', lastName: 'Boateng', email: 'kwame@example.com', password: 'demo123', role: 'user', eurBalance: 1200, btcBalance: 0.00850, status: 'suspended', kycStatus: 'pending', phone: '+233 50 000 0002', createdAt: '2024-08-15', address: 'bc1qkwame000000000000000000000000000000000' },
+    { id: 5, firstName: 'Fatima', lastName: 'Diallo', email: 'fatima@example.com', password: 'demo123', role: 'user', eurBalance: 12100, btcBalance: 0.12000, status: 'active', kycStatus: 'verified', phone: '+221 77 000 0001', createdAt: '2024-09-01', address: 'bc1qfatima00000000000000000000000000000000' },
   ],
   transactions: [
-    { id: 't001', userId: 2, type: 'deposit', amount: 1000, currency: 'USD', status: 'complete', note: 'Initial deposit', date: '2024-06-13', btcPrice: null },
-    { id: 't002', userId: 2, type: 'buy', amount: 0.002, currency: 'BTC', usdSpent: 130, status: 'complete', note: 'Market buy', date: '2024-06-14', btcPrice: 65000 },
-    { id: 't003', userId: 2, type: 'buy', amount: 0.00142, currency: 'BTC', usdSpent: 90, status: 'complete', note: 'Market buy', date: '2024-06-20', btcPrice: 63380 },
-    { id: 't004', userId: 3, type: 'deposit', amount: 5000, currency: 'USD', status: 'complete', note: 'Wire transfer', date: '2024-07-04', btcPrice: null },
-    { id: 't005', userId: 3, type: 'buy', amount: 0.05120, currency: 'BTC', usdSpent: 3300, status: 'complete', note: 'Market buy', date: '2024-07-05', btcPrice: 64453 },
-    { id: 't006', userId: 5, type: 'deposit', amount: 10000, currency: 'USD', status: 'complete', note: 'Bank wire', date: '2024-09-02', btcPrice: null },
-    { id: 't007', userId: 5, type: 'buy', amount: 0.12, currency: 'BTC', usdSpent: 7800, status: 'complete', note: 'Market buy', date: '2024-09-03', btcPrice: 65000 },
+    { id: 't001', userId: 2, type: 'deposit', amount: 1000, currency: 'EUR', status: 'complete', note: 'Initial deposit', date: '2024-06-13', btcPrice: null },
+    { id: 't002', userId: 2, type: 'buy', amount: 0.002, currency: 'BTC', eurSpent: 130, status: 'complete', note: 'Market buy', date: '2024-06-14', btcPrice: 65000 },
+    { id: 't003', userId: 2, type: 'buy', amount: 0.00142, currency: 'BTC', eurSpent: 90, status: 'complete', note: 'Market buy', date: '2024-06-20', btcPrice: 63380 },
+    { id: 't004', userId: 3, type: 'deposit', amount: 5000, currency: 'EUR', status: 'complete', note: 'Wire transfer', date: '2024-07-04', btcPrice: null },
+    { id: 't005', userId: 3, type: 'buy', amount: 0.05120, currency: 'BTC', eurSpent: 3300, status: 'complete', note: 'Market buy', date: '2024-07-05', btcPrice: 64453 },
+    { id: 't006', userId: 5, type: 'deposit', amount: 10000, currency: 'EUR', status: 'complete', note: 'Bank wire', date: '2024-09-02', btcPrice: null },
+    { id: 't007', userId: 5, type: 'buy', amount: 0.12, currency: 'BTC', eurSpent: 7800, status: 'complete', note: 'Market buy', date: '2024-09-03', btcPrice: 65000 },
   ],
   balanceLedger: [],
   notifications: [
     { id: 'n1', userId: 2, type: 'info', msg: 'Welcome to Sparkasse Bank! Complete your KYC to unlock all features.', date: '2024-06-12', read: false },
-    { id: 'n2', userId: 2, type: 'success', msg: 'Deposit of $1,000.00 received successfully.', date: '2024-06-13', read: false },
-    { id: 'n3', userId: 2, type: 'info', msg: 'Bitcoin price alert: BTC crossed $65,000.', date: '2024-06-20', read: false },
+    { id: 'n2', userId: 2, type: 'success', msg: 'Deposit of €1,000.00 received successfully.', date: '2024-06-13', read: false },
+    { id: 'n3', userId: 2, type: 'info', msg: 'Bitcoin price alert: BTC crossed €65,000.', date: '2024-06-20', read: false },
   ],
   settings: { tradingEnabled: true, registrationsOpen: true, withdrawalsEnabled: true, tradeFee: 0.5, withdrawFee: 1 },
   btcPrice: 67420,
@@ -1274,7 +1274,7 @@ function register() {
   if (DB.users.find(u => u.email === email)) { showToast('Email already registered','error'); return; }
   const newUser = {
     id: DB.nextId++, firstName: first, lastName: last, email, password: pass, phone,
-    role: 'user', usdBalance: 0, btcBalance: 0, status: 'active',
+    role: 'user', eurBalance: 0, btcBalance: 0, status: 'active',
     kycStatus: 'unverified', createdAt: new Date().toISOString().split('T')[0],
     address: 'bc1q' + Math.random().toString(36).substr(2, 38)
   };
@@ -1419,32 +1419,32 @@ function updateDashboard() {
   if (!currentUser) return;
   const u = DB.users.find(u => u.id === currentUser.id);
   currentUser = u;
-  const btcUsd = u.btcBalance * DB.btcPrice;
-  const total = u.usdBalance + btcUsd;
+  const btcEur = u.btcBalance * DB.btcPrice;
+  const total = u.eurBalance + btcEur;
   document.getElementById('dashBtcBal').textContent = u.btcBalance.toFixed(8);
-  document.getElementById('dashBtcUsd').textContent = `≈ $${btcUsd.toFixed(2)} USD`;
-  document.getElementById('dashUsdBal').textContent = `$${u.usdBalance.toFixed(2)}`;
-  document.getElementById('dashTotal').textContent = `$${total.toFixed(2)}`;
-  document.getElementById('buyAvailUsd').textContent = `$${u.usdBalance.toFixed(2)}`;
+  document.getElementById('dashBtcEur').textContent = `≈ €${btcEur.toFixed(2)} EUR`;
+  document.getElementById('dashEurBal').textContent = `€${u.eurBalance.toFixed(2)}`;
+  document.getElementById('dashTotal').textContent = `€${total.toFixed(2)}`;
+  document.getElementById('buyAvailEur').textContent = `€${u.eurBalance.toFixed(2)}`;
   document.getElementById('sellAvailBtc').textContent = `${u.btcBalance.toFixed(8)} BTC`;
-  document.getElementById('withdrawAvail').textContent = `$${u.usdBalance.toFixed(2)}`;
+  document.getElementById('withdrawAvail').textContent = `€${u.eurBalance.toFixed(2)}`;
   const txCount = DB.transactions.filter(t => t.userId === currentUser.id).length;
   document.getElementById('dashTxCount').textContent = txCount;
 }
 
 // =================== BUY ===================
 function calcBuy() {
-  const usd = parseFloat(document.getElementById('buyUsdAmount').value) || 0;
-  const fee = usd * 0.005;
-  const net = usd - fee;
+  const eur = parseFloat(document.getElementById('buyEurAmount').value) || 0;
+  const fee = eur * 0.005;
+  const net = eur - fee;
   const btc = net / DB.btcPrice;
   document.getElementById('buyBtcReceive').value = btc > 0 ? btc.toFixed(8) : '';
-  document.getElementById('buyPreview').innerHTML = usd > 0 ? `
+  document.getElementById('buyPreview').innerHTML = eur > 0 ? `
     <div style="font-size:14px; line-height:2.5; color:var(--muted);">
-      <div>Amount: <span style="color:var(--text)">$${usd.toFixed(2)}</span></div>
-      <div>Platform Fee (0.5%): <span style="color:var(--red)">-$${fee.toFixed(2)}</span></div>
-      <div>Net: <span style="color:var(--text)">$${net.toFixed(2)}</span></div>
-      <div>BTC Price: <span style="color:var(--text)">$${DB.btcPrice.toLocaleString()}</span></div>
+      <div>Amount: <span style="color:var(--text)">€${eur.toFixed(2)}</span></div>
+      <div>Platform Fee (0.5%): <span style="color:var(--red)">-€${fee.toFixed(2)}</span></div>
+      <div>Net: <span style="color:var(--text)">€${net.toFixed(2)}</span></div>
+      <div>BTC Price: <span style="color:var(--text)">€${DB.btcPrice.toLocaleString()}</span></div>
       <div style="border-top:1px solid var(--border); padding-top:10px; margin-top:6px;">
         You receive: <span style="color:var(--gold); font-family:'Space Mono',monospace; font-size:16px;">${btc.toFixed(8)} BTC</span>
       </div>
@@ -1453,21 +1453,21 @@ function calcBuy() {
 }
 
 function executeBuy() {
-  const usd = parseFloat(document.getElementById('buyUsdAmount').value) || 0;
+  const eur = parseFloat(document.getElementById('buyEurAmount').value) || 0;
   const u = DB.users.find(u => u.id === currentUser.id);
-  if (usd < 1) { showToast('Minimum buy is $1','error'); return; }
-  if (u.usdBalance < usd) { showToast('Insufficient USD balance','error'); return; }
-  const fee = usd * 0.005;
-  const net = usd - fee;
+  if (eur < 1) { showToast('Minimum buy is €1','error'); return; }
+  if (u.eurBalance < eur) { showToast('Insufficient EUR balance','error'); return; }
+  const fee = eur * 0.005;
+  const net = eur - fee;
   const btc = net / DB.btcPrice;
-  u.usdBalance -= usd;
+  u.eurBalance -= eur;
   u.btcBalance += btc;
-  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'buy', amount: btc, currency: 'BTC', usdSpent: usd, status: 'complete', note: 'Market buy', date: new Date().toISOString().split('T')[0], btcPrice: DB.btcPrice });
-  addNotif(u.id, 'success', `Purchased ${btc.toFixed(8)} BTC for $${usd.toFixed(2)}`);
+  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'buy', amount: btc, currency: 'BTC', eurSpent: eur, status: 'complete', note: 'Market buy', date: new Date().toISOString().split('T')[0], btcPrice: DB.btcPrice });
+  addNotif(u.id, 'success', `Purchased ${btc.toFixed(8)} BTC for €${eur.toFixed(2)}`);
   updateDashboard();
   renderTransactions('recentTxTable', 5);
   showToast(`Bought ${btc.toFixed(6)} BTC ✓`, 'success');
-  document.getElementById('buyUsdAmount').value = '';
+  document.getElementById('buyEurAmount').value = '';
   document.getElementById('buyBtcReceive').value = '';
 }
 
@@ -1479,15 +1479,15 @@ function renderSellPage() {
   document.getElementById('sellHoldings').innerHTML = `
     <div style="font-size:14px; line-height:2.5; color:var(--muted);">
       <div>BTC Balance: <span style="color:var(--gold); font-family:'Space Mono',monospace;">${u.btcBalance.toFixed(8)}</span></div>
-      <div>Current Price: <span style="color:var(--text)">$${DB.btcPrice.toLocaleString()}</span></div>
-      <div>BTC Value: <span style="color:var(--green)">$${(u.btcBalance * DB.btcPrice).toFixed(2)}</span></div>
+      <div>Current Price: <span style="color:var(--text)">€${DB.btcPrice.toLocaleString()}</span></div>
+      <div>BTC Value: <span style="color:var(--green)">€${(u.btcBalance * DB.btcPrice).toFixed(2)}</span></div>
     </div>`;
 }
 
 function calcSell() {
   const btc = parseFloat(document.getElementById('sellBtcAmount').value) || 0;
-  const usd = btc * DB.btcPrice * 0.995;
-  document.getElementById('sellUsdReceive').value = btc > 0 ? '$' + usd.toFixed(2) : '';
+  const eur = btc * DB.btcPrice * 0.995;
+  document.getElementById('sellEurReceive').value = btc > 0 ? '€' + eur.toFixed(2) : '';
 }
 
 function executeSell() {
@@ -1495,16 +1495,16 @@ function executeSell() {
   const u = DB.users.find(u => u.id === currentUser.id);
   if (btc <= 0) { showToast('Enter a valid BTC amount','error'); return; }
   if (u.btcBalance < btc) { showToast('Insufficient BTC balance','error'); return; }
-  const usd = btc * DB.btcPrice * 0.995;
+  const eur = btc * DB.btcPrice * 0.995;
   u.btcBalance -= btc;
-  u.usdBalance += usd;
-  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'sell', amount: usd, currency: 'USD', btcSold: btc, status: 'complete', note: 'Market sell', date: new Date().toISOString().split('T')[0], btcPrice: DB.btcPrice });
-  addNotif(u.id, 'success', `Sold ${btc.toFixed(8)} BTC for $${usd.toFixed(2)}`);
+  u.eurBalance += eur;
+  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'sell', amount: eur, currency: 'EUR', btcSold: btc, status: 'complete', note: 'Market sell', date: new Date().toISOString().split('T')[0], btcPrice: DB.btcPrice });
+  addNotif(u.id, 'success', `Sold ${btc.toFixed(8)} BTC for €${eur.toFixed(2)}`);
   updateDashboard();
   renderTransactions('recentTxTable', 5);
-  showToast(`Sold ${btc} BTC → $${usd.toFixed(2)} ✓`, 'success');
+  showToast(`Sold ${btc} BTC → €${eur.toFixed(2)} ✓`, 'success');
   document.getElementById('sellBtcAmount').value = '';
-  document.getElementById('sellUsdReceive').value = '';
+  document.getElementById('sellEurReceive').value = '';
 }
 
 // =================== SEND ===================
@@ -1539,14 +1539,14 @@ function selectDepMethod(method) {
 
 function executeDeposit() {
   const amount = parseFloat(document.getElementById('depositAmount').value) || 0;
-  if (amount < 10) { showToast('Minimum deposit is $10','error'); return; }
+  if (amount < 10) { showToast('Minimum deposit is €10','error'); return; }
   const u = DB.users.find(u => u.id === currentUser.id);
-  u.usdBalance += amount;
-  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'deposit', amount, currency: 'USD', status: 'complete', note: `${selectedDepMethod} deposit`, date: new Date().toISOString().split('T')[0], btcPrice: null });
-  addNotif(u.id, 'success', `Deposit of $${amount.toFixed(2)} received.`);
+  u.eurBalance += amount;
+  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'deposit', amount, currency: 'EUR', status: 'complete', note: `${selectedDepMethod} deposit`, date: new Date().toISOString().split('T')[0], btcPrice: null });
+  addNotif(u.id, 'success', `Deposit of €${amount.toFixed(2)} received.`);
   updateDashboard();
   renderTransactions('recentTxTable', 5);
-  showToast(`$${amount} deposited ✓`,'success');
+  showToast(`€${amount} deposited ✓`,'success');
 }
 
 // =================== WITHDRAW ===================
@@ -1554,16 +1554,16 @@ function executeWithdraw() {
   const amount = parseFloat(document.getElementById('withdrawAmount').value) || 0;
   const acct = document.getElementById('withdrawAcct').value.trim();
   if (!acct) { showToast('Enter bank account digits','error'); return; }
-  if (amount < 20) { showToast('Minimum withdrawal is $20','error'); return; }
+  if (amount < 20) { showToast('Minimum withdrawal is €20','error'); return; }
   const u = DB.users.find(u => u.id === currentUser.id);
   const total = amount + 1;
-  if (u.usdBalance < total) { showToast('Insufficient balance','error'); return; }
-  u.usdBalance -= total;
-  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'withdrawal', amount, currency: 'USD', status: 'pending', note: `To account ***${acct}`, date: new Date().toISOString().split('T')[0], btcPrice: null });
-  addNotif(u.id, 'info', `Withdrawal of $${amount.toFixed(2)} is being processed.`);
+  if (u.eurBalance < total) { showToast('Insufficient balance','error'); return; }
+  u.eurBalance -= total;
+  DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'withdrawal', amount, currency: 'EUR', status: 'pending', note: `To account ***${acct}`, date: new Date().toISOString().split('T')[0], btcPrice: null });
+  addNotif(u.id, 'info', `Withdrawal of €${amount.toFixed(2)} is being processed.`);
   updateDashboard();
   renderTransactions('recentTxTable', 5);
-  showToast(`Withdrawal of $${amount} pending ✓`,'success');
+  showToast(`Withdrawal of €${amount} pending ✓`,'success');
 }
 
 // =================== TRANSACTIONS TABLE ===================
@@ -1581,7 +1581,7 @@ function renderTransactions(tableId, limit) {
   txs.forEach(tx => {
     const amt = tx.currency === 'BTC'
       ? `<span style="color:var(--gold); font-family:'Space Mono',monospace;">${tx.amount > 0 ? '+' : ''}${tx.amount.toFixed(8)} BTC</span>`
-      : `<span style="color:var(--green);">${tx.amount > 0 ? '+' : ''}$${tx.amount.toFixed(2)}</span>`;
+      : `<span style="color:var(--green);">${tx.amount > 0 ? '+' : ''}€${tx.amount.toFixed(2)}</span>`;
     table.innerHTML += `<tr>
       <td><span class="badge ${colors[tx.type]||'muted'}">${(icons[tx.type]||'◆')} ${tx.type.toUpperCase()}</span></td>
       <td>${amt}</td>
@@ -1604,7 +1604,7 @@ function filterTx(type) {
   txs.forEach(tx => {
     const amt = tx.currency === 'BTC'
       ? `<span style="color:var(--gold); font-family:'Space Mono',monospace;">${tx.amount.toFixed(8)} BTC</span>`
-      : `$${tx.amount.toFixed(2)}`;
+      : `€${tx.amount.toFixed(2)}`;
     table.innerHTML += `<tr>
       <td><span class="badge ${tx.type === 'buy' ? 'gold' : tx.type === 'sell' ? 'green' : tx.type === 'deposit' ? 'blue' : 'muted'}">${tx.type.toUpperCase()}</span></td>
       <td>${amt}</td>
@@ -1621,14 +1621,14 @@ function renderPortfolio() {
   if (!currentUser) return;
   const u = DB.users.find(u => u.id === currentUser.id);
   const btcVal = u.btcBalance * DB.btcPrice;
-  const total = u.usdBalance + btcVal;
+  const total = u.eurBalance + btcVal;
   const btcPct = total > 0 ? (btcVal / total * 100).toFixed(1) : 0;
-  const usdPct = total > 0 ? (u.usdBalance / total * 100).toFixed(1) : 0;
+  const eurPct = total > 0 ? (u.eurBalance / total * 100).toFixed(1) : 0;
 
   document.getElementById('portfolioStats').innerHTML = `
-    <div class="stat-card"><div class="stat-icon">₿</div><div class="stat-label">BTC Holdings</div><div class="stat-value gold">${u.btcBalance.toFixed(8)}</div><div class="stat-change up">≈ $${btcVal.toFixed(2)}</div></div>
-    <div class="stat-card"><div class="stat-icon">💵</div><div class="stat-label">USD Cash</div><div class="stat-value green">$${u.usdBalance.toFixed(2)}</div><div class="stat-change">Available</div></div>
-    <div class="stat-card"><div class="stat-icon">💼</div><div class="stat-label">Total Value</div><div class="stat-value">$${total.toFixed(2)}</div><div class="stat-change up">All assets</div></div>
+    <div class="stat-card"><div class="stat-icon">₿</div><div class="stat-label">BTC Holdings</div><div class="stat-value gold">${u.btcBalance.toFixed(8)}</div><div class="stat-change up">≈ €${btcVal.toFixed(2)}</div></div>
+    <div class="stat-card"><div class="stat-icon">💵</div><div class="stat-label">EUR Cash</div><div class="stat-value green">€${u.eurBalance.toFixed(2)}</div><div class="stat-change">Available</div></div>
+    <div class="stat-card"><div class="stat-icon">💼</div><div class="stat-label">Total Value</div><div class="stat-value">€${total.toFixed(2)}</div><div class="stat-change up">All assets</div></div>
   `;
   document.getElementById('holdingsBreakdown').innerHTML = `
     <div style="margin-bottom:16px;">
@@ -1639,9 +1639,9 @@ function renderPortfolio() {
     </div>
     <div>
       <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px;">
-        <span>💵 USD Cash</span><span style="color:var(--green);">${usdPct}%</span>
+        <span>💵 EUR Cash</span><span style="color:var(--green);">${eurPct}%</span>
       </div>
-      <div class="portfolio-bar"><div class="portfolio-fill" style="width:${usdPct}%; background: linear-gradient(90deg, #00D68F, #00ffbb);"></div></div>
+      <div class="portfolio-bar"><div class="portfolio-fill" style="width:${eurPct}%; background: linear-gradient(90deg, #00D68F, #00ffbb);"></div></div>
     </div>
   `;
 }
@@ -1694,8 +1694,8 @@ function saveSettings() {
 function renderAdminDashboard() {
   const userCount = DB.users.filter(u => u.role !== 'admin').length;
   document.getElementById('adminUserCount').textContent = userCount;
-  const totalUsd = DB.users.reduce((s,u) => s + u.usdBalance, 0);
-  document.getElementById('adminTotalUsd').textContent = '$' + totalUsd.toLocaleString();
+  const totalEur = DB.users.reduce((s,u) => s + u.eurBalance, 0);
+  document.getElementById('adminTotalEur').textContent = '€' + totalEur.toLocaleString();
   document.getElementById('adminTxCount').textContent = DB.transactions.length;
 
   const table = document.getElementById('adminActivityTable');
@@ -1707,7 +1707,7 @@ function renderAdminDashboard() {
     table.innerHTML += `<tr>
       <td>${name}</td>
       <td><span class="badge ${tx.type==='buy'?'gold':tx.type==='sell'?'green':tx.type==='deposit'?'blue':'muted'}">${tx.type.toUpperCase()}</span></td>
-      <td style="font-family:'Space Mono',monospace; font-size:13px;">${tx.currency === 'BTC' ? tx.amount.toFixed(8)+' BTC' : '$'+tx.amount.toFixed(2)}</td>
+      <td style="font-family:'Space Mono',monospace; font-size:13px;">${tx.currency === 'BTC' ? tx.amount.toFixed(8)+' BTC' : '€'+tx.amount.toFixed(2)}</td>
       <td style="color:var(--muted); font-size:13px;">${tx.date}</td>
       <td><span class="badge ${tx.status==='complete'?'green':'gold'}">${tx.status}</span></td>
     </tr>`;
@@ -1722,12 +1722,12 @@ function renderAdminUsers() {
     !query || u.firstName.toLowerCase().includes(query) || u.lastName.toLowerCase().includes(query) || u.email.toLowerCase().includes(query)
   ));
 
-  table.innerHTML = `<tr><th>User</th><th>Email</th><th>USD</th><th>BTC</th><th>KYC</th><th>Status</th><th>Actions</th></tr>`;
+  table.innerHTML = `<tr><th>User</th><th>Email</th><th>EUR</th><th>BTC</th><th>KYC</th><th>Status</th><th>Actions</th></tr>`;
   users.forEach(u => {
     table.innerHTML += `<tr>
       <td><div style="font-weight:600;">${u.firstName} ${u.lastName}</div><div style="font-size:11px;color:var(--muted);">ID: ${u.id}</div></td>
       <td style="font-size:13px;">${u.email}</td>
-      <td style="font-family:'Space Mono',monospace; font-size:13px; color:var(--green);">$${u.usdBalance.toLocaleString()}</td>
+      <td style="font-family:'Space Mono',monospace; font-size:13px; color:var(--green);">€${u.eurBalance.toLocaleString()}</td>
       <td style="font-family:'Space Mono',monospace; font-size:13px; color:var(--gold);">${u.btcBalance.toFixed(6)}</td>
       <td><span class="badge ${u.kycStatus==='verified'?'green':u.kycStatus==='pending'?'gold':'muted'}">${u.kycStatus}</span></td>
       <td><span class="badge ${u.status==='active'?'green':'red'}">${u.status}</span></td>
@@ -1773,7 +1773,7 @@ function viewUserDetail(uid) {
   const txs = DB.transactions.filter(t => t.userId === uid).slice(-5).reverse();
   document.getElementById('adminUserDetail').innerHTML = `
     <div class="stat-grid" style="margin-bottom:20px;">
-      <div class="stat-card"><div class="stat-label">USD Balance</div><div class="stat-value green">$${u.usdBalance.toLocaleString()}</div></div>
+      <div class="stat-card"><div class="stat-label">EUR Balance</div><div class="stat-value green">€${u.eurBalance.toLocaleString()}</div></div>
       <div class="stat-card"><div class="stat-label">BTC Balance</div><div class="stat-value gold">${u.btcBalance.toFixed(8)}</div></div>
       <div class="stat-card"><div class="stat-label">Account Status</div><div class="stat-value" style="color:${u.status==='active'?'var(--green)':'var(--red)'}">${u.status}</div></div>
       <div class="stat-card"><div class="stat-label">KYC Status</div><div class="stat-value">${u.kycStatus}</div></div>
@@ -1801,7 +1801,7 @@ function viewUserDetail(uid) {
             <tr><th>Type</th><th>Amount</th><th>Date</th></tr>
             ${txs.map(tx => `<tr>
               <td><span class="badge ${tx.type==='buy'?'gold':tx.type==='sell'?'green':'muted'}">${tx.type}</span></td>
-              <td style="font-size:13px; font-family:'Space Mono',monospace;">${tx.currency==='BTC'?tx.amount.toFixed(8)+' BTC':'$'+tx.amount.toFixed(2)}</td>
+              <td style="font-size:13px; font-family:'Space Mono',monospace;">${tx.currency==='BTC'?tx.amount.toFixed(8)+' BTC':'€'+tx.amount.toFixed(2)}</td>
               <td style="font-size:12px; color:var(--muted);">${tx.date}</td>
             </tr>`).join('')}
             ${txs.length===0?'<tr><td colspan="3" style="text-align:center;color:var(--muted);padding:20px;">No transactions</td></tr>':''}
@@ -1823,8 +1823,8 @@ function renderAdminTransactions() {
     table.innerHTML += `<tr>
       <td style="font-size:13px;">${name}</td>
       <td><span class="badge ${tx.type==='buy'?'gold':tx.type==='sell'?'green':tx.type==='deposit'?'blue':'muted'}">${tx.type.toUpperCase()}</span></td>
-      <td style="font-family:'Space Mono',monospace; font-size:12px;">${tx.currency==='BTC'?tx.amount.toFixed(8)+' BTC':'$'+tx.amount.toFixed(2)}</td>
-      <td style="font-size:12px; color:var(--muted);">${tx.btcPrice ? '$'+tx.btcPrice.toLocaleString() : '—'}</td>
+      <td style="font-family:'Space Mono',monospace; font-size:12px;">${tx.currency==='BTC'?tx.amount.toFixed(8)+' BTC':'€'+tx.amount.toFixed(2)}</td>
+      <td style="font-size:12px; color:var(--muted);">${tx.btcPrice ? '€'+tx.btcPrice.toLocaleString() : '—'}</td>
       <td><span class="badge ${tx.status==='complete'?'green':'gold'}">${tx.status}</span></td>
       <td style="font-size:12px; color:var(--muted);">${tx.date}</td>
       <td style="font-size:12px; color:var(--muted);">${tx.note||'—'}</td>
@@ -1849,7 +1849,7 @@ function loadUserBalance() {
   const u = DB.users.find(u => u.id === uid);
   if (!u) return;
   display.style.display = 'block';
-  document.getElementById('adjUsdCurrent').textContent = '$' + u.usdBalance.toFixed(2);
+  document.getElementById('adjEurCurrent').textContent = '€' + u.eurBalance.toFixed(2);
   document.getElementById('adjBtcCurrent').textContent = u.btcBalance.toFixed(8);
 }
 
@@ -1862,14 +1862,14 @@ function executeBalAdj() {
   if (amount <= 0) { showToast('Enter valid amount','error'); return; }
   const u = DB.users.find(u => u.id === uid);
   let desc = '';
-  if (type === 'usd_add') { u.usdBalance += amount; desc = `+$${amount} USD`; }
-  else if (type === 'usd_sub') { u.usdBalance = Math.max(0, u.usdBalance - amount); desc = `-$${amount} USD`; }
+  if (type === 'eur_add') { u.eurBalance += amount; desc = `+€${amount} EUR`; }
+  else if (type === 'eur_sub') { u.eurBalance = Math.max(0, u.eurBalance - amount); desc = `-€${amount} EUR`; }
   else if (type === 'btc_add') { u.btcBalance += amount; desc = `+${amount} BTC`; }
   else if (type === 'btc_sub') { u.btcBalance = Math.max(0, u.btcBalance - amount); desc = `-${amount} BTC`; }
-  else if (type === 'usd_set') { u.usdBalance = amount; desc = `Set $${amount} USD`; }
+  else if (type === 'eur_set') { u.eurBalance = amount; desc = `Set €${amount} EUR`; }
   else if (type === 'btc_set') { u.btcBalance = amount; desc = `Set ${amount} BTC`; }
   DB.balanceLedger.push({ user: u.firstName + ' ' + u.lastName, type: desc, reason, date: new Date().toISOString().split('T')[0] });
-  DB.transactions.push({ id: 't'+DB.nextTxId++, userId: u.id, type: 'admin_credit', amount: amount, currency: type.includes('btc') ? 'BTC' : 'USD', status: 'complete', note: reason, date: new Date().toISOString().split('T')[0], btcPrice: null });
+  DB.transactions.push({ id: 't'+DB.nextTxId++, userId: u.id, type: 'admin_credit', amount: amount, currency: type.includes('btc') ? 'BTC' : 'EUR', status: 'complete', note: reason, date: new Date().toISOString().split('T')[0], btcPrice: null });
   addNotif(u.id, 'info', `Admin balance adjustment: ${desc}. Note: ${reason}`);
   loadUserBalance();
   renderBalanceLedger();
@@ -1929,11 +1929,11 @@ function adminAddUser() {
   const first = document.getElementById('auFirst').value.trim();
   const last = document.getElementById('auLast').value.trim();
   const email = document.getElementById('auEmail').value.trim();
-  const usd = parseFloat(document.getElementById('auUsd').value) || 0;
+  const eur = parseFloat(document.getElementById('auEur').value) || 0;
   const btc = parseFloat(document.getElementById('auBtc').value) || 0;
   if (!first || !email) { showToast('Fill in required fields','error'); return; }
   if (DB.users.find(u => u.email === email)) { showToast('Email already exists','error'); return; }
-  DB.users.push({ id: DB.nextId++, firstName: first, lastName: last, email, password: 'demo123', role: 'user', usdBalance: usd, btcBalance: btc, status: 'active', kycStatus: 'unverified', phone: '', createdAt: new Date().toISOString().split('T')[0], address: 'bc1q'+Math.random().toString(36).substr(2,38) });
+  DB.users.push({ id: DB.nextId++, firstName: first, lastName: last, email, password: 'demo123', role: 'user', eurBalance: eur, btcBalance: btc, status: 'active', kycStatus: 'unverified', phone: '', createdAt: new Date().toISOString().split('T')[0], address: 'bc1q'+Math.random().toString(36).substr(2,38) });
   closeModal('addUserModal');
   renderAdminUsers();
   renderAdminDashboard();
@@ -1943,7 +1943,7 @@ function adminAddUser() {
 function resetDB() {
   DB.transactions = DB.transactions.filter(t => t.id.startsWith('t00'));
   DB.balanceLedger = [];
-  DB.users.filter(u => u.role !== 'admin').forEach(u => { u.usdBalance = 0; u.btcBalance = 0; u.kycStatus = 'unverified'; });
+  DB.users.filter(u => u.role !== 'admin').forEach(u => { u.eurBalance = 0; u.btcBalance = 0; u.kycStatus = 'unverified'; });
   renderAdminDashboard();
   renderAdminUsers();
   renderAdminTransactions();
@@ -1972,9 +1972,9 @@ function startPriceSimulation() {
     const change = (Math.random() - 0.48) * 80;
     DB.btcPrice = Math.max(50000, Math.min(100000, DB.btcPrice + change));
     const el = document.getElementById('liveBtcPrice');
-    if (el) el.textContent = '$' + DB.btcPrice.toLocaleString(undefined, {maximumFractionDigits:0});
+    if (el) el.textContent = '€' + DB.btcPrice.toLocaleString(undefined, {maximumFractionDigits:0});
     const buyEl = document.getElementById('buyBtcPrice');
-    if (buyEl) buyEl.textContent = '$' + DB.btcPrice.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+    if (buyEl) buyEl.textContent = '€' + DB.btcPrice.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
     updateDashboard();
   }, 3000);
 }
@@ -2079,14 +2079,14 @@ function drawLineChart(canvas, labels, data, color1, color2) {
 // =================== TICKER ===================
 function initTicker() {
   const coins = [
-    { name: 'BTC', price: '$67,420', change: '+2.4%', up: true },
-    { name: 'ETH', price: '$3,841', change: '+1.7%', up: true },
-    { name: 'BNB', price: '$412', change: '-0.3%', up: false },
-    { name: 'SOL', price: '$182', change: '+4.2%', up: true },
-    { name: 'ADA', price: '$0.47', change: '-1.1%', up: false },
-    { name: 'DOGE', price: '$0.18', change: '+8.3%', up: true },
-    { name: 'XRP', price: '$0.61', change: '+0.9%', up: true },
-    { name: 'AVAX', price: '$38.2', change: '-2.1%', up: false },
+    { name: 'BTC', price: '€67,420', change: '+2.4%', up: true },
+    { name: 'ETH', price: '€3,841', change: '+1.7%', up: true },
+    { name: 'BNB', price: '€412', change: '-0.3%', up: false },
+    { name: 'SOL', price: '€182', change: '+4.2%', up: true },
+    { name: 'ADA', price: '€0.47', change: '-1.1%', up: false },
+    { name: 'DOGE', price: '€0.18', change: '+8.3%', up: true },
+    { name: 'XRP', price: '€0.61', change: '+0.9%', up: true },
+    { name: 'AVAX', price: '€38.2', change: '-2.1%', up: false },
   ];
   const html = [...coins, ...coins].map(c => `
     <div class="ticker-item">
