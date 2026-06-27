@@ -1406,7 +1406,13 @@ function renderNavItems(nav, items) {
   });
 }
 
+function toggleSidebar() {
+  document.querySelector('.sidebar').classList.toggle('open');
+}
+
 function showPage(pageId) {
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar) sidebar.classList.remove('open');
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const pg = document.getElementById('page-' + pageId);
