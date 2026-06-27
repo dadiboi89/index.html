@@ -1787,7 +1787,32 @@ function adminChangeName(uid) {
   }
   u.firstName = newFirst.trim();
   u.lastName = newLast.trim();
+  if(typeof saveDB === 'function') saveDB();
   showToast('Name updated successfully', 'success');
+  viewUserDetail(uid);
+  renderAdminUsers();
+}
+
+function adminChangeEmail(uid) {
+  const u = DB.users.find(u => u.id === uid);
+  if (!u) return;
+  const newEmail = prompt("Enter new Email Address:", u.email);
+  if (newEmail === null || newEmail.trim() === '') return;
+  u.email = newEmail.trim();
+  if(typeof saveDB === 'function') saveDB();
+  showToast('Email updated successfully', 'success');
+  viewUserDetail(uid);
+  renderAdminUsers();
+}
+
+function adminChangePhone(uid) {
+  const u = DB.users.find(u => u.id === uid);
+  if (!u) return;
+  const newPhone = prompt("Enter new Phone Number:", u.phone || '');
+  if (newPhone === null) return;
+  u.phone = newPhone.trim();
+  if(typeof saveDB === 'function') saveDB();
+  showToast('Phone updated successfully', 'success');
   viewUserDetail(uid);
   renderAdminUsers();
 }
@@ -1807,8 +1832,8 @@ function viewUserDetail(uid) {
         <div class="card-title">User Profile</div>
         <div style="font-size:14px; line-height:2.3; color:var(--muted);">
           <div>Name: <span style="color:var(--text); font-weight:600;">${u.firstName} ${u.lastName}</span> <span style="margin-left:8px; cursor:pointer; color:var(--gold); font-size:12px;" onclick="adminChangeName(${u.id})">✏️ Edit</span></div>
-          <div>Email: <span style="color:var(--text);">${u.email}</span></div>
-          <div>Phone: <span style="color:var(--text);">${u.phone || 'N/A'}</span></div>
+          <div>Email: <span style="color:var(--text);">${u.email}</span> <span style="margin-left:8px; cursor:pointer; color:var(--gold); font-size:12px;" onclick="adminChangeEmail(${u.id})">✏️ Edit</span></div>
+          <div>Phone: <span style="color:var(--text);">${u.phone || 'N/A'}</span> <span style="margin-left:8px; cursor:pointer; color:var(--gold); font-size:12px;" onclick="adminChangePhone(${u.id})">✏️ Edit</span></div>
           <div>Joined: <span style="color:var(--text);">${u.createdAt}</span></div>
           <div>Role: <span style="color:var(--text);">${u.role}</span></div>
         </div>
