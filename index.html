@@ -1811,6 +1811,23 @@ function adminChangeEmail(uid) {
   renderAdminUsers();
 }
 
+function adminChangeBalance(uid) {
+  const u = DB.users.find(u => u.id === uid);
+  if (!u) return;
+  const newBal = prompt("Enter new EUR Balance:", u.eurBalance);
+  if (newBal === null) return;
+  const parsed = parseFloat(newBal);
+  if (isNaN(parsed) || parsed < 0) {
+    showToast('Invalid balance', 'error');
+    return;
+  }
+  u.eurBalance = parsed;
+  if(typeof saveDB === 'function') saveDB();
+  showToast('Balance updated successfully', 'success');
+  viewUserDetail(uid);
+  renderAdminUsers();
+}
+
 function adminChangePhone(uid) {
   const u = DB.users.find(u => u.id === uid);
   if (!u) return;
@@ -1828,7 +1845,7 @@ function viewUserDetail(uid) {
   const txs = DB.transactions.filter(t => t.userId === uid).slice(-5).reverse();
   document.getElementById('adminUserDetail').innerHTML = `
     <div class="stat-grid" style="margin-bottom:20px;">
-      <div class="stat-card"><div class="stat-label">EUR Balance</div><div class="stat-value green">€${u.eurBalance.toLocaleString()}</div></div>
+      <div class="stat-card"><div class="stat-label">EUR Balance <span style="margin-left:8px; cursor:pointer; color:var(--gold); font-size:12px; font-weight:normal;" onclick="adminChangeBalance(${u.id})">✏️ Edit</span></div><div class="stat-value green">€${u.eurBalance.toLocaleString()}</div></div>
       <div class="stat-card"><div class="stat-label">BTC Balance</div><div class="stat-value gold">${u.btcBalance.toFixed(8)}</div></div>
       <div class="stat-card"><div class="stat-label">Account Status</div><div class="stat-value" style="color:${u.status==='active'?'var(--green)':'var(--red)'}">${u.status}</div></div>
       <div class="stat-card"><div class="stat-label">KYC Status</div><div class="stat-value">${u.kycStatus}</div></div>
@@ -1929,6 +1946,7 @@ function executeBalAdj() {
   loadUserBalance();
   renderBalanceLedger();
   renderAdminDashboard();
+  if(typeof saveDB === 'function') saveDB();
   showToast(`Balance adjusted: ${desc} ✓`,'success');
 }
 
