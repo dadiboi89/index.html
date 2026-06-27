@@ -1268,6 +1268,25 @@ function saveDB() {
   localStorage.setItem('sparkasseDB', JSON.stringify(DB));
 }
 
+// Auto-sync across tabs
+window.addEventListener('storage', (e) => {
+  if (e.key === 'sparkasseDB' && e.newValue) {
+    try {
+      DB = JSON.parse(e.newValue);
+      if (typeof currentUser !== 'undefined' && currentUser) {
+        currentUser = DB.users.find(u => u.id === currentUser.id) || currentUser;
+        if (typeof updateDashboard === 'function') updateDashboard();
+        if (currentUser.role === 'admin') {
+          if (typeof renderAdminUsers === 'function') renderAdminUsers();
+          if (typeof renderBalanceLedger === 'function') renderBalanceLedger();
+          if (typeof renderAdminDashboard === 'function') renderAdminDashboard();
+        }
+      }
+    } catch(err) { console.error(err); }
+  }
+});
+
+
 // Auto-save DB on any user interaction
 document.addEventListener('click', () => setTimeout(saveDB, 100));
 document.addEventListener('input', () => setTimeout(saveDB, 100));
@@ -1303,6 +1322,7 @@ function register() {
     address: 'bc1q' + Math.random().toString(36).substr(2, 38)
   };
   DB.users.push(newUser);
+  if(typeof saveDB === 'function') saveDB();
   DB.notifications.push({ id: 'n'+Date.now(), userId: newUser.id, type: 'info', msg: `Welcome ${first}! Your account is ready.`, date: new Date().toISOString().split('T')[0], read: false });
   currentUser = newUser;
   closeModal('registerModal');
@@ -1339,6 +1359,7 @@ function initApp() {
   } else {
     showPage('dashboard');
     updateDashboard();
+  if(typeof saveDB === 'function') saveDB();
     renderTransactions('recentTxTable', 5);
     renderTransactions('fullTxTable');
     renderPortfolio();
@@ -1495,6 +1516,7 @@ function executeBuy() {
   DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'buy', amount: btc, currency: 'BTC', eurSpent: eur, status: 'complete', note: 'Market buy', date: new Date().toISOString().split('T')[0], btcPrice: DB.btcPrice });
   addNotif(u.id, 'success', `Purchased ${btc.toFixed(8)} BTC for €${eur.toFixed(2)}`);
   updateDashboard();
+  if(typeof saveDB === 'function') saveDB();
   renderTransactions('recentTxTable', 5);
   showToast(`Bought ${btc.toFixed(6)} BTC ✓`, 'success');
   document.getElementById('buyEurAmount').value = '';
@@ -1531,6 +1553,7 @@ function executeSell() {
   DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'sell', amount: eur, currency: 'EUR', btcSold: btc, status: 'complete', note: 'Market sell', date: new Date().toISOString().split('T')[0], btcPrice: DB.btcPrice });
   addNotif(u.id, 'success', `Sold ${btc.toFixed(8)} BTC for €${eur.toFixed(2)}`);
   updateDashboard();
+  if(typeof saveDB === 'function') saveDB();
   renderTransactions('recentTxTable', 5);
   showToast(`Sold ${btc} BTC → €${eur.toFixed(2)} ✓`, 'success');
   document.getElementById('sellBtcAmount').value = '';
@@ -1550,6 +1573,7 @@ function executeSend() {
   DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'send', amount: btc, currency: 'BTC', status: 'complete', note: note || `To: ${addr.substr(0,12)}...`, date: new Date().toISOString().split('T')[0], btcPrice: DB.btcPrice });
   addNotif(u.id, 'info', `Sent ${btc} BTC to ${addr.substr(0,16)}...`);
   updateDashboard();
+  if(typeof saveDB === 'function') saveDB();
   showToast(`Sent ${btc} BTC ✓`,'success');
   document.getElementById('sendAddr').value = '';
   document.getElementById('sendAmount').value = '';
@@ -1575,6 +1599,7 @@ function executeDeposit() {
   DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'deposit', amount, currency: 'EUR', status: 'complete', note: `${selectedDepMethod} deposit`, date: new Date().toISOString().split('T')[0], btcPrice: null });
   addNotif(u.id, 'success', `Deposit of €${amount.toFixed(2)} received.`);
   updateDashboard();
+  if(typeof saveDB === 'function') saveDB();
   renderTransactions('recentTxTable', 5);
   showToast(`€${amount} deposited ✓`,'success');
 }
@@ -1592,6 +1617,7 @@ function executeWithdraw() {
   DB.transactions.push({ id: 't' + DB.nextTxId++, userId: u.id, type: 'withdrawal', amount, currency: 'EUR', status: 'pending', note: `To account ***${acct}`, date: new Date().toISOString().split('T')[0], btcPrice: null });
   addNotif(u.id, 'info', `Withdrawal of €${amount.toFixed(2)} is being processed.`);
   updateDashboard();
+  if(typeof saveDB === 'function') saveDB();
   renderTransactions('recentTxTable', 5);
   showToast(`Withdrawal of €${amount} pending ✓`,'success');
 }
@@ -2049,6 +2075,7 @@ function startPriceSimulation() {
     const buyEl = document.getElementById('buyBtcPrice');
     if (buyEl) buyEl.textContent = '€' + DB.btcPrice.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
     updateDashboard();
+  if(typeof saveDB === 'function') saveDB();
   }, 3000);
 }
 
